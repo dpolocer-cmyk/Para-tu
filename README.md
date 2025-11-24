@@ -80,6 +80,8 @@
 </head>
 
 <body>
+
+<!-- PANTALLA 1 -->
 <div id="propuesta">
     <img class="imagen-creativa" 
          src="https://i.pinimg.com/474x/41/fa/6a/41fa6a760822ff93bfe43fa2b1d3cf07.jpg">
@@ -142,18 +144,6 @@ function rechazar(){
     const y = (Math.random() * 120) - 60;
     no.style.transform = `translate(${x}px, ${y}px)`;
 }
-    
-function iniciarCorazones(){
-    setInterval(() => {
-        let elemento = document.createElement("div");
-        elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
-        elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
-        elemento.style.left = Math.random() * 100 + "vw";
-        elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
-        document.body.appendChild(elemento);
-
-        setTimeout(() => elemento.remove(), 5000);
-    }, 300);
 
 function aceptar(){
     document.body.innerHTML = `
@@ -183,13 +173,18 @@ function aceptar(){
     
     iniciarCorazones();
 }
-}
 
-</script>
+function iniciarCorazones(){
+    setInterval(() => {
+        let elemento = document.createElement("div");
+        elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
+        elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
+        elemento.style.left = Math.random() * 100 + "vw";
+        elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(elemento);
 
-</body>
-</html>
-
+        setTimeout(() => elemento.remove(), 5000);
+    }, 300);
 }
 
 </script>
