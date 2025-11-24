@@ -113,6 +113,123 @@
 const mensajes = [
     "¿Seguro? 😣",
     "No seas malo conmigo 🥺",
+    "Dame una oportunida<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Propuesta</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #ffe6f2;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    #propuesta, #pregunta{
+        margin-top: 80px;
+    }
+
+    .btn{
+        padding: 15px 35px;
+        font-size: 24px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #si{
+        background: #ff4d94;
+        color: white;
+        position: relative;
+        z-index: 10;
+        transition: 0.25s ease;
+    }
+
+    #no{
+        background: white;
+        border: 2px solid #ff4d94;
+        color: #ff4d94;
+        position: absolute;
+        transition: 0.3s;
+        z-index: 1;
+    }
+
+    #msg{
+        font-size: 24px;
+        color: #d9006b;
+        margin-top: 20px;
+        min-height: 40px;
+    }
+
+    .sticker{
+        width: 180px;
+        display: block;
+        margin: 20px auto;
+        transition: 0.3s;
+    }
+
+    .imagen-creativa{
+        width: 280px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    /* CORAZONES Y ESTRELLAS */
+    .corazon, .estrella {
+        position: fixed;
+        top: -10px;
+        font-size: 30px;
+        animation: caer 4s linear infinite;
+        opacity: 0.9;
+        z-index: 999;
+    }
+
+    @keyframes caer{
+        0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- PRIMERA PANTALLA -->
+<div id="propuesta">
+    <img class="imagen-creativa" 
+         src="https://i.pinimg.com/474x/41/fa/6a/41fa6a760822ff93bfe43fa2b1d3cf07.jpg">
+    
+    <h1>Tengo una propuesta 😳💗</h1>
+    
+    <button class="btn" onclick="mostrarPregunta()">Ver propuesta 💌</button>
+</div>
+
+<!-- SEGUNDA PANTALLA -->
+<div id="pregunta" style="display:none;">
+    <h1>¿Quieres regresar conmigo? 🥺💗</h1>
+
+    <img class="sticker" id="sticker-img"
+         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSlkgrnvrWRCNvkajsY58XJLd08EkrpaM_M0joRoaehiPvTYRBP2S4dwLHbw_g5FALyq8&usqp=CAU">
+
+    <div style="margin-top:40px; position:relative; height:260px;">
+        <button class="btn" id="si" onclick="aceptar()">Sí 💞</button>
+        <button class="btn" id="no" onclick="rechazar()">No 💔</button>
+    </div>
+
+    <div id="msg"></div>
+</div>
+
+
+<script>
+
+// MENSAJES QUE CAMBIAN
+const mensajes = [
+    "¿Seguro? 😣",
+    "No seas malo conmigo 🥺",
     "Dame una oportunidad pues 😞",
     "Piénsalo bien, corazón ❤️",
     "No me digas que no 😭",
@@ -121,6 +238,15 @@ const mensajes = [
     "No me rompas otra vez 😢",
     "Solo dame una chance más 😖",
     "Te juro que puedo mejorar ✨"
+];
+
+// 👇 IMÁGENES (TÚ LAS CAMBIAS)
+const imagenes = [
+    "https://pngdownload.io/wp-content/uploads/2025/05/Rudeus-Greyrat-Mushoku-Tensei-768x768.webp",
+    "https://assets.stickerswiki.app/s/animom2/d6a8a381.thumb.webp",
+    "https://i.pinimg.com/736x/3c/ac/2f/3cac2f9c5b146a59dacec7c83929ccb6.jpg",
+    "https://i.pinimg.com/236x/04/4d/ae/044dae336495a6960591f7ec3a3f59a6.jpg",
+    "https://assets.stickerswiki.app/s/hideforme/ab4af2fa.thumb.webp"
 ];
 
 let index = 0;
@@ -132,20 +258,24 @@ function mostrarPregunta(){
 }
 
 function rechazar(){
+
+    // Cambia el mensaje
     document.getElementById("msg").innerText = mensajes[index];
+
+    // Cambia la imagen (sticker)
+    const sticker = document.getElementById("sticker-img");
+    sticker.src = imagenes[index % imagenes.length];
+
     index = (index + 1) % mensajes.length;
 
-    // CRECER SI SIN TAPAR EL MENSAJE
+    // CRECER SI sin tapar
     sizeSi += 8;
     const si = document.getElementById("si");
-
-    // Crece hacia los lados, no hacia arriba
     si.style.fontSize = sizeSi + "px";
     si.style.padding = "20px " + (sizeSi * 1.5) + "px";
 
-    // Mover botón NO sin chocar el mensaje ni al SI
+    // MOVER NO
     const no = document.getElementById("no");
-
     const x = (Math.random() * 280) - 140;
     const y = (Math.random() * 120) - 50;
 
@@ -193,6 +323,12 @@ function iniciarCorazones(){
         setTimeout(() => elemento.remove(), 5000);
     }, 300);
 }
+
+</script>
+
+</body>
+</html>
+
 
 </script>
 
