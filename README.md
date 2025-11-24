@@ -80,8 +80,6 @@
 </head>
 
 <body>
-
-<!-- PANTALLA 1 -->
 <div id="propuesta">
     <img class="imagen-creativa" 
          src="https://i.pinimg.com/474x/41/fa/6a/41fa6a760822ff93bfe43fa2b1d3cf07.jpg">
@@ -143,10 +141,8 @@ function rechazar(){
     const x = (Math.random() * 300) - 150;
     const y = (Math.random() * 120) - 60;
     no.style.transform = `translate(${x}px, ${y}px)`;
-
-    
-    iniciarCorazones();
 }
+    
 function iniciarCorazones(){
     setInterval(() => {
         let elemento = document.createElement("div");
@@ -158,6 +154,7 @@ function iniciarCorazones(){
 
         setTimeout(() => elemento.remove(), 5000);
     }, 300);
+
 function aceptar(){
     document.body.innerHTML = `
         <div style="
@@ -182,9 +179,16 @@ function aceptar(){
             <img style="width: 200px;"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrb89SF64azOT04C18HsIMcCRVyE5yiQB0Xplg_9RhRlb6PK6_nyyEAHqVIYLOvD-xU2Y&usqp=CAU">
         </div>
+    `;
     
+    iniciarCorazones();
+}
 }
 
+</script>
+
+</body>
+</html>
 
 }
 
