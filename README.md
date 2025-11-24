@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -63,26 +62,26 @@
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
-    /* corazones */
+    /* CORAZONES Y ESTRELLAS */
     .corazon, .estrella {
         position: fixed;
         top: -10px;
-        font-size: 25px;
+        font-size: 30px;
         animation: caer 4s linear infinite;
-        opacity: 0.8;
+        opacity: 0.9;
         z-index: 999;
     }
 
     @keyframes caer{
-        0% { transform: translateY(-10px); opacity: 1; }
-        100% { transform: translateY(120vh); opacity: 0; }
+        0%   { transform: translateY(-10px) rotate(0deg); }
+        100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
     }
 </style>
-
 </head>
+
 <body>
 
-<!-- PRIMERA PANTALLA -->
+<!-- PANTALLA 1 -->
 <div id="propuesta">
     <img class="imagen-creativa" 
          src="https://i.pinimg.com/474x/41/fa/6a/41fa6a760822ff93bfe43fa2b1d3cf07.jpg">
@@ -92,7 +91,7 @@
     <button class="btn" onclick="mostrarPregunta()">Ver propuesta 💌</button>
 </div>
 
-<!-- SEGUNDA PANTALLA -->
+<!-- PANTALLA 2 -->
 <div id="pregunta" style="display:none;">
     <h1>¿Quieres regresar conmigo? 🥺💗</h1>
 
@@ -107,94 +106,87 @@
     <div id="msg"></div>
 </div>
 
+
 <script>
-    const mensajes = [
-        "¿Seguro? 😣",
-        "No seas malo conmigo 🥺",
-        "Dame una oportunidad pues 😞",
-        "Piénsalo bien, corazón ❤️",
-        "No me digas que no 😭",
-        "Oye, no seas así conmigo 😫",
-        "Sabes que te quiero mucho 💗",
-        "No me rompas otra vez 😢",
-        "Solo dame una chance más 😖",
-        "Te juro que puedo mejorar ✨"
-    ];
 
-    let index = 0;
-    let sizeSi = 24;
+const mensajes = [
+    "¿Seguro? 😣",
+    "No seas malo conmigo 🥺",
+    "Dame una oportunidad pues 😞",
+    "Piénsalo bien, corazón ❤️",
+    "No me digas que no 😭",
+    "Oye, no seas así conmigo 😫",
+    "Sabes que te quiero mucho 💗",
+    "No me rompas otra vez 😢",
+    "Solo dame una chance más 😖",
+    "Te juro que puedo mejorar ✨"
+];
 
-    function mostrarPregunta(){
-        document.getElementById("propuesta").style.display = "none";
-        document.getElementById("pregunta").style.display = "block";
-    }
+let index = 0;
+let sizeSi = 24;
 
-    function rechazar(){
-        document.getElementById("msg").innerText = mensajes[index];
-        index = (index + 1) % mensajes.length;
+function mostrarPregunta(){
+    document.getElementById("propuesta").style.display = "none";
+    document.getElementById("pregunta").style.display = "block";
+}
 
-        sizeSi += 8;
-        const si = document.getElementById("si");
-        si.style.fontSize = sizeSi + "px";
-        si.style.padding = (sizeSi/2) + "px " + (sizeSi) + "px";
+function rechazar(){
+    document.getElementById("msg").innerText = mensajes[index];
+    index = (index + 1) % mensajes.length;
 
-        const no = document.getElementById("no");
+    sizeSi += 8;
+    const si = document.getElementById("si");
+    si.style.fontSize = sizeSi + "px";
+    si.style.padding = (sizeSi/2) + "px " + (sizeSi) + "px";
 
-        const x = (Math.random() * 300) - 150;
-        const y = (Math.random() * 120) - 60;
+    const no = document.getElementById("no");
+    const x = (Math.random() * 300) - 150;
+    const y = (Math.random() * 120) - 60;
+    no.style.transform = `translate(${x}px, ${y}px)`;
+}
 
-        no.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    /* FUNCIÓN FINAL BONITA */
-    function aceptar(){
-        document.body.innerHTML = `
-            <div style="
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-
-                background: linear-gradient(135deg, #ff8dbb, #ff69a3, #ffb3d9);
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                text-align: center;
+function aceptar(){
+    document.body.innerHTML = `
+        <div style="
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff99c8, #ff4d94);
+            text-align: center;
+            color: white;
+            padding: 20px;
+        ">
+            <h1 style="
+                font-size: 45px;
+                margin-bottom: 20px;
             ">
-                <h1 style="
-                    font-size: 45px;
-                    color: white;
-                    margin-bottom: 20px;
-                    font-weight: bold;
-                    text-shadow: 2px 2px 10px rgba(255,0,120,0.7);
-                ">
-                    Sabía que dirías que sí 💘✨
-                </h1>
+                Sabía que dirías que sí 💘✨
+            </h1>
 
-                <img style="width: 220px;" 
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrb89SF64azOT04C18HsIMcCRVyE5yiQB0Xplg_9RhRlb6PK6_nyyEAHqVIYLOvD-xU2Y&usqp=CAU">
-            </div>
-        `;
+            <img style="width: 200px;"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrb89SF64azOT04C18HsIMcCRVyE5yiQB0Xplg_9RhRlb6PK6_nyyEAHqVIYLOvD-xU2Y&usqp=CAU">
+        </div>
+    `;
+    
+    iniciarCorazones();
+}
 
-        iniciarCorazones();
-    }
+function iniciarCorazones(){
+    setInterval(() => {
+        let elemento = document.createElement("div");
+        elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
+        elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
+        elemento.style.left = Math.random() * 100 + "vw";
+        elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(elemento);
 
-    /* CORAZONES + ESTRELLITAS */
-    function iniciarCorazones(){
-        setInterval(() => {
-            let elemento = document.createElement("div");
-            elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
-            elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
-            elemento.style.left = Math.random() * 100 + "vw";
-            elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
-            document.body.appendChild(elemento);
+        setTimeout(() => elemento.remove(), 5000);
+    }, 300);
+}
 
-            setTimeout(() => elemento.remove(), 5000);
-        }, 300);
-    }
 </script>
 
 </body>
