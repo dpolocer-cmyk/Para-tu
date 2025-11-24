@@ -143,8 +143,21 @@ function rechazar(){
     const x = (Math.random() * 300) - 150;
     const y = (Math.random() * 120) - 60;
     no.style.transform = `translate(${x}px, ${y}px)`;
-}
 
+    
+    iniciarCorazones();
+}
+function iniciarCorazones(){
+    setInterval(() => {
+        let elemento = document.createElement("div");
+        elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
+        elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
+        elemento.style.left = Math.random() * 100 + "vw";
+        elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(elemento);
+
+        setTimeout(() => elemento.remove(), 5000);
+    }, 300);
 function aceptar(){
     document.body.innerHTML = `
         <div style="
@@ -169,22 +182,10 @@ function aceptar(){
             <img style="width: 200px;"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrb89SF64azOT04C18HsIMcCRVyE5yiQB0Xplg_9RhRlb6PK6_nyyEAHqVIYLOvD-xU2Y&usqp=CAU">
         </div>
-    `;
     
-    iniciarCorazones();
 }
 
-function iniciarCorazones(){
-    setInterval(() => {
-        let elemento = document.createElement("div");
-        elemento.classList.add(Math.random() > 0.5 ? "corazon" : "estrella");
-        elemento.innerHTML = Math.random() > 0.5 ? "💖" : "✨";
-        elemento.style.left = Math.random() * 100 + "vw";
-        elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
-        document.body.appendChild(elemento);
 
-        setTimeout(() => elemento.remove(), 5000);
-    }, 300);
 }
 
 </script>
