@@ -32,6 +32,7 @@
         color: white;
         position: relative;
         z-index: 10;
+        transition: 0.25s ease;
     }
 
     #no{
@@ -73,7 +74,7 @@
     }
 
     @keyframes caer{
-        0%   { transform: translateY(-10px) rotate(0deg); }
+        0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
         100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
     }
 </style>
@@ -98,7 +99,7 @@
     <img class="sticker" 
          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSlkgrnvrWRCNvkajsY58XJLd08EkrpaM_M0joRoaehiPvTYRBP2S4dwLHbw_g5FALyq8&usqp=CAU">
 
-    <div style="margin-top:40px; position:relative; height:200px;">
+    <div style="margin-top:40px; position:relative; height:260px;">
         <button class="btn" id="si" onclick="aceptar()">Sí 💞</button>
         <button class="btn" id="no" onclick="rechazar()">No 💔</button>
     </div>
@@ -134,14 +135,20 @@ function rechazar(){
     document.getElementById("msg").innerText = mensajes[index];
     index = (index + 1) % mensajes.length;
 
+    // CRECER SI SIN TAPAR EL MENSAJE
     sizeSi += 8;
     const si = document.getElementById("si");
-    si.style.fontSize = sizeSi + "px";
-    si.style.padding = (sizeSi/2) + "px " + (sizeSi) + "px";
 
+    // Crece hacia los lados, no hacia arriba
+    si.style.fontSize = sizeSi + "px";
+    si.style.padding = "20px " + (sizeSi * 1.5) + "px";
+
+    // Mover botón NO sin chocar el mensaje ni al SI
     const no = document.getElementById("no");
-    const x = (Math.random() * 300) - 150;
-    const y = (Math.random() * 120) - 60;
+
+    const x = (Math.random() * 280) - 140;
+    const y = (Math.random() * 120) - 50;
+
     no.style.transform = `translate(${x}px, ${y}px)`;
 }
 
