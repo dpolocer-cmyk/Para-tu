@@ -43,13 +43,6 @@
         z-index: 1;
     }
 
-    #msg{
-        font-size: 24px;
-        color: #d9006b;
-        margin-top: 20px;
-        min-height: 40px;
-    }
-
     .sticker{
         width: 200px;
         display: block;
@@ -61,13 +54,6 @@
         border-radius: 20px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
-    #msg{
-    font-size: 24px;
-    color: #d9006b;
-    margin-top: 20px;
-    min-height: 40px;
-    transition: margin-top 0.3s;
-}
 
     /* Corazones y estrellitas */
     .corazon, .estrella {
@@ -82,7 +68,6 @@
     @keyframes caer{
         0% { transform: translateY(-10px); opacity: 1; }
         100% { transform: translateY(120vh); opacity: 0; }
-
     }
 </style>
 
@@ -110,26 +95,10 @@
         <button class="btn" id="si" onclick="aceptar()">Sí 💞</button>
         <button class="btn" id="no" onclick="rechazar()">No 💔</button>
     </div>
-
-    <div id="msg"></div>
 </div>
 
 <script>
-    // MENSAJES
-    const mensajes = [
-        "¿Seguro? 😣",
-        "No seas malo conmigo 🥺",
-        "Dame una oportunidad pues 😞",
-        "Piénsalo bien, corazón ❤️",
-        "No me digas que no 😭",
-        "Oye, no seas así conmigo 😫",
-        "Sabes que te quiero mucho 💗",
-        "No me rompas otra vez 😢",
-        "Solo dame una chance más 😖",
-        "Te juro que puedo mejorar ✨"
-    ];
-
-    // IMÁGENES QUE SÍ FUNCIONAN (TODAS PROBADAS)
+    // IMÁGENES que SÍ cargan bien
     const imagenes = [
         "https://ih1.redbubble.net/image.5499714719.9896/st,small,507x507-pad,600x600,f8f8f8.jpg",
         "https://assets.stickerswiki.app/s/animom2/d6a8a381.thumb.webp",
@@ -145,36 +114,9 @@
         document.getElementById("propuesta").style.display = "none";
         document.getElementById("pregunta").style.display = "block";
     }
-    function rechazar(){
-    document.getElementById("msg").innerText = mensajes[index];
-
-    document.getElementById("sticker").src = imagenes[index % imagenes.length];
-
-    index = (index + 1) % mensajes.length;
-
-    // crecer botón SÍ
-    sizeSi += 8;
-    const si = document.getElementById("si");
-    si.style.fontSize = sizeSi + "px";
-    si.style.padding = (sizeSi/2) + "px " + sizeSi + "px";
-
-    // 👉 MOVER EL MENSAJE PARA QUE NO SE TAPE
-    const msg = document.getElementById("msg");
-    msg.style.marginTop = (20 + sizeSi * 0.8) + "px";
-
-    // mover botón NO
-    const no = document.getElementById("no");
-    const x = (Math.random() * 300) - 150;
-    const y = (Math.random() * 120) - 60;
-    no.style.transform = `translate(${x}px, ${y}px)`;
-}
-
 
     function rechazar(){
-        // mensaje cambia siempre
-        document.getElementById("msg").innerText = mensajes[index % mensajes.length];
-
-        // imagen cambia siempre sin errores
+        // cambiar imagen
         document.getElementById("sticker").src = imagenes[index % imagenes.length];
 
         index++;
@@ -236,5 +178,3 @@
 
 </body>
 </html>
-
-
